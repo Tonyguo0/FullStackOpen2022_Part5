@@ -1,0 +1,562 @@
+{
+  "countries": [
+    {
+      "name": {
+        "common": "Germany",
+        "official": "Federal Republic of Germany",
+        "nativeName": {
+          "deu": {
+            "official": "Bundesrepublik Deutschland",
+            "common": "Deutschland"
+          }
+        }
+      },
+      "tld": [".de"],
+      "cca2": "DE",
+      "ccn3": "276",
+      "cca3": "DEU",
+      "cioc": "GER",
+      "independent": true,
+      "status": "officially-assigned",
+      "unMember": true,
+      "currencies": {
+        "EUR": {
+          "name": "Euro",
+          "symbol": "€"
+        }
+      },
+      "idd": {
+        "root": "+4",
+        "suffixes": ["9"]
+      },
+      "capital": ["Berlin"],
+      "altSpellings": [
+        "DE",
+        "Federal Republic of Germany",
+        "Bundesrepublik Deutschland"
+      ],
+      "region": "Europe",
+      "subregion": "Western Europe",
+      "languages": {
+        "deu": "German"
+      },
+      "translations": {
+        "ara": {
+          "official": "جمهورية ألمانيا الاتحادية",
+          "common": "ألمانيا"
+        },
+        "ces": {
+          "official": "Spolková republika Německo",
+          "common": "Německo"
+        },
+        "cym": {
+          "official": "Federal Republic of Germany",
+          "common": "Germany"
+        },
+        "deu": {
+          "official": "Bundesrepublik Deutschland",
+          "common": "Deutschland"
+        },
+        "est": {
+          "official": "Saksamaa Liitvabariik",
+          "common": "Saksamaa"
+        },
+        "fin": {
+          "official": "Saksan liittotasavalta",
+          "common": "Saksa"
+        },
+        "fra": {
+          "official": "République fédérale d'Allemagne",
+          "common": "Allemagne"
+        },
+        "hrv": {
+          "official": "Njemačka Federativna Republika",
+          "common": "Njemačka"
+        },
+        "hun": {
+          "official": "Német Szövetségi Köztársaság",
+          "common": "Németország"
+        },
+        "ita": {
+          "official": "Repubblica federale di Germania",
+          "common": "Germania"
+        },
+        "jpn": {
+          "official": "ドイツ連邦共和国",
+          "common": "ドイツ"
+        },
+        "kor": {
+          "official": "독일 연방 공화국",
+          "common": "독일"
+        },
+        "nld": {
+          "official": "Bondsrepubliek Duitsland",
+          "common": "Duitsland"
+        },
+        "per": {
+          "official": "جمهوری فدرال آلمان",
+          "common": "آلمان"
+        },
+        "pol": {
+          "official": "Republika Federalna Niemiec",
+          "common": "Niemcy"
+        },
+        "por": {
+          "official": "República Federal da Alemanha",
+          "common": "Alemanha"
+        },
+        "rus": {
+          "official": "Федеративная Республика Германия",
+          "common": "Германия"
+        },
+        "slk": {
+          "official": "Nemecká spolková republika",
+          "common": "Nemecko"
+        },
+        "spa": {
+          "official": "República Federal de Alemania",
+          "common": "Alemania"
+        },
+        "swe": {
+          "official": "Förbundsrepubliken Tyskland",
+          "common": "Tyskland"
+        },
+        "urd": {
+          "official": "وفاقی جمہوریہ جرمنی",
+          "common": "جرمنی"
+        },
+        "zho": {
+          "official": "德意志联邦共和国",
+          "common": "德国"
+        }
+      },
+      "latlng": [51, 9],
+      "landlocked": false,
+      "borders": [
+        "AUT",
+        "BEL",
+        "CZE",
+        "DNK",
+        "FRA",
+        "LUX",
+        "NLD",
+        "POL",
+        "CHE"
+      ],
+      "area": 357114,
+      "demonyms": {
+        "eng": {
+          "f": "German",
+          "m": "German"
+        },
+        "fra": {
+          "f": "Allemande",
+          "m": "Allemand"
+        }
+      },
+      "flag": "🇩🇪",
+      "maps": {
+        "googleMaps": "https://goo.gl/maps/mD9FBMq1nvXUBrkv6",
+        "openStreetMaps": "https://www.openstreetmap.org/relation/51477"
+      },
+      "population": 83240525,
+      "gini": {
+        "2016": 31.9
+      },
+      "fifa": "GER",
+      "car": {
+        "signs": ["DY"],
+        "side": "right"
+      },
+      "timezones": ["UTC+01:00"],
+      "continents": ["Europe"],
+      "flags": {
+        "png": "https://flagcdn.com/w320/de.png",
+        "svg": "https://flagcdn.com/de.svg"
+      },
+      "coatOfArms": {
+        "png": "https://mainfacts.com/media/images/coats_of_arms/de.png",
+        "svg": "https://mainfacts.com/media/images/coats_of_arms/de.svg"
+      },
+      "startOfWeek": "monday",
+      "capitalInfo": {
+        "latlng": [52.52, 13.4]
+      },
+      "postalCode": {
+        "format": "#####",
+        "regex": "^(d{5})$"
+      }
+    },
+    {
+      "name": {
+        "common": "Morocco",
+        "official": "Kingdom of Morocco",
+        "nativeName": {
+          "ara": {
+            "official": "المملكة المغربية",
+            "common": "المغرب"
+          },
+          "ber": {
+            "official": "ⵜⴰⴳⵍⴷⵉⵜ ⵏ ⵍⵎⵖⵔⵉⴱ",
+            "common": "ⵍⵎⴰⵖⵔⵉⴱ"
+          }
+        }
+      },
+      "tld": [".ma", "المغرب."],
+      "cca2": "MA",
+      "ccn3": "504",
+      "cca3": "MAR",
+      "cioc": "MAR",
+      "independent": true,
+      "status": "officially-assigned",
+      "unMember": true,
+      "currencies": {
+        "MAD": {
+          "name": "Moroccan dirham",
+          "symbol": "د.م."
+        }
+      },
+      "idd": {
+        "root": "+2",
+        "suffixes": ["12"]
+      },
+      "capital": ["Rabat"],
+      "altSpellings": ["MA", "Kingdom of Morocco", "Al-Mamlakah al-Maġribiyah"],
+      "region": "Africa",
+      "subregion": "Northern Africa",
+      "languages": {
+        "ara": "Arabic",
+        "ber": "Berber"
+      },
+      "translations": {
+        "ara": {
+          "official": "المملكة المغربية",
+          "common": "المغرب"
+        },
+        "ces": {
+          "official": "Marocké království",
+          "common": "Maroko"
+        },
+        "cym": {
+          "official": "Kingdom of Morocco",
+          "common": "Morocco"
+        },
+        "deu": {
+          "official": "Königreich Marokko",
+          "common": "Marokko"
+        },
+        "est": {
+          "official": "Maroko Kuningriik",
+          "common": "Maroko"
+        },
+        "fin": {
+          "official": "Marokon kuningaskunta",
+          "common": "Marokko"
+        },
+        "fra": {
+          "official": "Royaume du Maroc",
+          "common": "Maroc"
+        },
+        "hrv": {
+          "official": "Kraljevina Maroko",
+          "common": "Maroko"
+        },
+        "hun": {
+          "official": "Marokkói Királyság",
+          "common": "Marokkó"
+        },
+        "ita": {
+          "official": "Regno del Marocco",
+          "common": "Marocco"
+        },
+        "jpn": {
+          "official": "モロッコ王国",
+          "common": "モロッコ"
+        },
+        "kor": {
+          "official": "모로코 왕국",
+          "common": "모로코"
+        },
+        "nld": {
+          "official": "Koninkrijk Marokko",
+          "common": "Marokko"
+        },
+        "per": {
+          "official": "پادشاهی مراکش",
+          "common": "مراکش"
+        },
+        "pol": {
+          "official": "Królestwo Marokańskie",
+          "common": "Maroko"
+        },
+        "por": {
+          "official": "Reino de Marrocos",
+          "common": "Marrocos"
+        },
+        "rus": {
+          "official": "Королевство Марокко",
+          "common": "Марокко"
+        },
+        "slk": {
+          "official": "Marocké kniežatstvo",
+          "common": "Maroko"
+        },
+        "spa": {
+          "official": "Reino de Marruecos",
+          "common": "Marruecos"
+        },
+        "swe": {
+          "official": "Konungariket Marocko",
+          "common": "Marocko"
+        },
+        "urd": {
+          "official": "مملکتِ مراکش",
+          "common": "مراکش"
+        },
+        "zho": {
+          "official": "摩洛哥王国",
+          "common": "摩洛哥"
+        }
+      },
+      "latlng": [32, -5],
+      "landlocked": false,
+      "borders": ["DZA", "ESH", "ESP"],
+      "area": 446550,
+      "demonyms": {
+        "eng": {
+          "f": "Moroccan",
+          "m": "Moroccan"
+        },
+        "fra": {
+          "f": "Marocaine",
+          "m": "Marocain"
+        }
+      },
+      "flag": "🇲🇦",
+      "maps": {
+        "googleMaps": "https://goo.gl/maps/6oMv3dyBZg3iaXQ5A",
+        "openStreetMaps": "https://www.openstreetmap.org/relation/3630439"
+      },
+      "population": 36910558,
+      "gini": {
+        "2013": 39.5
+      },
+      "fifa": "MAR",
+      "car": {
+        "signs": ["MA"],
+        "side": "right"
+      },
+      "timezones": ["UTC"],
+      "continents": ["Africa"],
+      "flags": {
+        "png": "https://flagcdn.com/w320/ma.png",
+        "svg": "https://flagcdn.com/ma.svg"
+      },
+      "coatOfArms": {
+        "png": "https://mainfacts.com/media/images/coats_of_arms/ma.png",
+        "svg": "https://mainfacts.com/media/images/coats_of_arms/ma.svg"
+      },
+      "startOfWeek": "monday",
+      "capitalInfo": {
+        "latlng": [34.02, -6.82]
+      },
+      "postalCode": {
+        "format": "#####",
+        "regex": "^(d{5})$"
+      }
+    },
+    {
+      "name": {
+        "common": "Belgium",
+        "official": "Kingdom of Belgium",
+        "nativeName": {
+          "deu": {
+            "official": "Königreich Belgien",
+            "common": "Belgien"
+          },
+          "fra": {
+            "official": "Royaume de Belgique",
+            "common": "Belgique"
+          },
+          "nld": {
+            "official": "Koninkrijk België",
+            "common": "België"
+          }
+        }
+      },
+      "tld": [".be"],
+      "cca2": "BE",
+      "ccn3": "056",
+      "cca3": "BEL",
+      "cioc": "BEL",
+      "independent": true,
+      "status": "officially-assigned",
+      "unMember": true,
+      "currencies": {
+        "EUR": {
+          "name": "Euro",
+          "symbol": "€"
+        }
+      },
+      "idd": {
+        "root": "+3",
+        "suffixes": ["2"]
+      },
+      "capital": ["Brussels"],
+      "altSpellings": [
+        "BE",
+        "België",
+        "Belgie",
+        "Belgien",
+        "Belgique",
+        "Kingdom of Belgium",
+        "Koninkrijk België",
+        "Royaume de Belgique",
+        "Königreich Belgien"
+      ],
+      "region": "Europe",
+      "subregion": "Western Europe",
+      "languages": {
+        "deu": "German",
+        "fra": "French",
+        "nld": "Dutch"
+      },
+      "translations": {
+        "ara": {
+          "official": "مملكة بلجيكا",
+          "common": "بلجيكا"
+        },
+        "ces": {
+          "official": "Belgické království",
+          "common": "Belgie"
+        },
+        "cym": {
+          "official": "Teyrnas Gwlad Belg",
+          "common": "Gwlad Belg"
+        },
+        "deu": {
+          "official": "Königreich Belgien",
+          "common": "Belgien"
+        },
+        "est": {
+          "official": "Belgia Kuningriik",
+          "common": "Belgia"
+        },
+        "fin": {
+          "official": "Belgian kuningaskunta",
+          "common": "Belgia"
+        },
+        "fra": {
+          "official": "Royaume de Belgique",
+          "common": "Belgique"
+        },
+        "hrv": {
+          "official": "Kraljevina Belgija",
+          "common": "Belgija"
+        },
+        "hun": {
+          "official": "Belga Királyság",
+          "common": "Belgium"
+        },
+        "ita": {
+          "official": "Regno del Belgio",
+          "common": "Belgio"
+        },
+        "jpn": {
+          "official": "ベルギー王国",
+          "common": "ベルギー"
+        },
+        "kor": {
+          "official": "벨기에 왕국",
+          "common": "벨기에"
+        },
+        "nld": {
+          "official": "Koninkrijk België",
+          "common": "België"
+        },
+        "per": {
+          "official": "پادشاهی بلژیک",
+          "common": "بلژیک"
+        },
+        "pol": {
+          "official": "Królestwo Belgii",
+          "common": "Belgia"
+        },
+        "por": {
+          "official": "Reino da Bélgica",
+          "common": "Bélgica"
+        },
+        "rus": {
+          "official": "Королевство Бельгия",
+          "common": "Бельгия"
+        },
+        "slk": {
+          "official": "Belgické kráľovstvo",
+          "common": "Belgicko"
+        },
+        "spa": {
+          "official": "Reino de Bélgica",
+          "common": "Bélgica"
+        },
+        "swe": {
+          "official": "Konungariket Belgien",
+          "common": "Belgien"
+        },
+        "urd": {
+          "official": "مملکتِ بلجئیم",
+          "common": "بلجئیم"
+        },
+        "zho": {
+          "official": "比利时王国",
+          "common": "比利时"
+        }
+      },
+      "latlng": [50.83333333, 4],
+      "landlocked": false,
+      "borders": ["FRA", "DEU", "LUX", "NLD"],
+      "area": 30528,
+      "demonyms": {
+        "eng": {
+          "f": "Belgian",
+          "m": "Belgian"
+        },
+        "fra": {
+          "f": "Belge",
+          "m": "Belge"
+        }
+      },
+      "flag": "🇧🇪",
+      "maps": {
+        "googleMaps": "https://goo.gl/maps/UQQzat85TCtPRXAL8",
+        "openStreetMaps": "https://www.openstreetmap.org/relation/52411"
+      },
+      "population": 11555997,
+      "gini": {
+        "2018": 27.2
+      },
+      "fifa": "BEL",
+      "car": {
+        "signs": ["B"],
+        "side": "right"
+      },
+      "timezones": ["UTC+01:00"],
+      "continents": ["Europe"],
+      "flags": {
+        "png": "https://flagcdn.com/w320/be.png",
+        "svg": "https://flagcdn.com/be.svg"
+      },
+      "coatOfArms": {
+        "png": "https://mainfacts.com/media/images/coats_of_arms/be.png",
+        "svg": "https://mainfacts.com/media/images/coats_of_arms/be.svg"
+      },
+      "startOfWeek": "monday",
+      "capitalInfo": {
+        "latlng": [50.83, 4.33]
+      },
+      "postalCode": {
+        "format": "####",
+        "regex": "^(d{4})$"
+      }
+    }
+  ]
+}

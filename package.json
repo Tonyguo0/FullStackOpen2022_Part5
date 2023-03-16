@@ -1,0 +1,55 @@
+{
+  "name": "fullstackopen2022_part5",
+  "version": "1.0.0",
+  "description": "## Exercises - [ ] exercise 5.1 - [ ] exercise 5.2 - [ ] exercise 5.3 - [ ] exercise 5.4 - [ ] exercise 5.5 - [ ] exercise 5.6 - [ ] exercise 5.7 - [ ] exercise 5.8 - [ ] exercise 5.9 - [ ] exercise 5.10 - [ ] exercise 5.11 - [ ] exercise 5.12 - [ ] exercise 5.13 - [ ] exercise 5.14 - [ ] exercise 5.15 - [ ] exercise 5.16 - [ ] exercise 5.17 - [ ] exercise 5.18 - [ ] exercise 5.19 - [ ] exercise 5.20 - [ ] exercise 5.21 - [ ] exercise 5.22 - [ ] exercise 5.23",
+  "main": "index.js",
+  "scripts": {
+    "start:exercise": "NODE_ENV=production node exercises/bloglist/index.js",
+    "start:practice": "cd practices/part2-notes && react-scripts start",
+    "dev:exercise": "NODE_ENV=development nodemon -L exercises/bloglist/index.js",
+    "dev:practice": "NODE_ENV=development nodemon -L practice/part4_backend/index.js",
+    "test:exercise": "NODE_ENV=test jest exercises/bloglist/tests/blog_api.test.js --verbose --runInBand --forceExit",
+    "test:practice": "NODE_ENV=test jest practice/part4_backend/tests/note_api.test.js --verbose --runInBand --forceExit --detectOpenHandles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tonyguo0/FullStackOpen2022_Part5.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tonyguo0/FullStackOpen2022_Part5/issues"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^14.1.1",
+    "axios": "^0.27.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.0"
+  },
+  "homepage": "https://github.com/Tonyguo0/FullStackOpen2022_Part5#readme",
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
