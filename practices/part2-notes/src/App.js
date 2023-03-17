@@ -36,6 +36,8 @@ const App = () => {
   const [showAll, setShowAll] = useState(true);
   const [notestoshow, setNotesToShow] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   // get all notes from url with useEffect hook
   const hooks = () => {
@@ -85,8 +87,7 @@ const App = () => {
     // console.log(note);
     const changedNote = { ...note, important: !note.important };
     // console.log(changedNote);
-    // when we use put, it already sets the note into the notes url, so when we set the state of notes
-    // if it equals to id then it should be the response data/returnedNote else set it to what was in notes before
+    // when we use put, it already sets the changedNote into the notes url, so when we use setNotes, if it equals to id then it should be the response data/returnedNote/changedNote else set the important value to before change
     noteService
       .update(id, changedNote)
       .then((returnedNote) => {
@@ -106,10 +107,30 @@ const App = () => {
     // console.log(`Importance of ${id} needs to be toggled`);
   };
 
+  const handleLogin = (event) => {
+    event.preventDefault();
+    console.log('logging in with', username, password)
+  }
+
   return (
     <div>
       <h1>Notes</h1>
       <Notification message={errorMessage} />
+
+      <form onSubmit={handleLogin}>
+        <div>
+          username 
+          <input type="text" value={username} name="Username" onChange={({target}) => setUsername(target.value)}
+          />
+        </div>
+        <div>
+          password 
+          <input type="password" value={password} name="Password" onChange={({target}) => setPassword(target.value)}
+          />
+        </div>
+        <button type="submit">login</button>
+      </form>
+
       <div>
         <button onClick={() => setShowAll(!showAll)}>
           show {showAll ? "important" : "all"}

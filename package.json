@@ -6,6 +6,7 @@
   "scripts": {
     "start:exercise": "NODE_ENV=production node exercises/bloglist/index.js",
     "start:practice": "cd practices/part2-notes && react-scripts start",
+    "server:practice": "cd practices/part2-notes && json-server -p3001 --watch db.json",
     "dev:exercise": "NODE_ENV=development nodemon -L exercises/bloglist/index.js",
     "dev:practice": "NODE_ENV=development nodemon -L practice/part4_backend/index.js",
     "test:exercise": "NODE_ENV=test jest exercises/bloglist/tests/blog_api.test.js --verbose --runInBand --forceExit",
@@ -28,10 +29,25 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.4.5",
+    "mongoose-unique-validator": "^3.1.0",
+    "morgan": "^1.10.0"
   },
+  "proxy": "http://localhost:3001",
   "devDependencies": {
-    "json-server": "^0.17.0"
+    "json-server": "^0.17.0",
+    "eslint": "^8.23.0",
+    "jest": "^29.3.1",
+    "nodemon": "^2.0.18",
+    "shx": "^0.3.4",
+    "supertest": "^6.3.3"
   },
   "homepage": "https://github.com/Tonyguo0/FullStackOpen2022_Part5#readme",
   "eslintConfig": {

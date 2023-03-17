@@ -27,13 +27,13 @@
     {
       "content": "HTML is easy",
       "date": "2022-06-23T15:42:25.008Z",
-      "important": false,
+      "important": true,
       "id": 5
     },
     {
       "content": "HTML is easy",
       "date": "2022-06-23T15:42:26.932Z",
-      "important": false,
+      "important": true,
       "id": 6
     }
   ]
