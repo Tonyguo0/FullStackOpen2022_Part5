@@ -2,6 +2,7 @@
 import Note from "./components/Note";
 import noteService from "./services/notes";
 import { useState, useEffect } from "react";
+import loginService from './services/login'
 
 const Footer = () => {
   const footerStyle = {
@@ -10,7 +11,7 @@ const Footer = () => {
     fontSize: 16,
   };
 
-  
+
   return (
     <div style={footerStyle}>
       <br />
@@ -38,6 +39,7 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [user, setUser] = useState(null)
 
   // get all notes from url with useEffect hook
   const hooks = () => {
@@ -107,9 +109,23 @@ const App = () => {
     // console.log(`Importance of ${id} needs to be toggled`);
   };
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    console.log('logging in with', username, password)
+  const handleLogin = async (event) => {
+    event.preventDefault()
+
+    try {
+      const user = await loginService.login({
+        username, password
+      })
+      setUser(user)
+      setUsername('')
+      setPassword('')
+
+    } catch (exception) {
+      setErrorMessage('Wrong credentials')
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
+    }
   }
 
   return (
@@ -119,13 +135,13 @@ const App = () => {
 
       <form onSubmit={handleLogin}>
         <div>
-          username 
-          <input type="text" value={username} name="Username" onChange={({target}) => setUsername(target.value)}
+          username
+          <input type="text" value={username} name="Username" onChange={({ target }) => setUsername(target.value)}
           />
         </div>
         <div>
-          password 
-          <input type="password" value={password} name="Password" onChange={({target}) => setPassword(target.value)}
+          password
+          <input type="password" value={password} name="Password" onChange={({ target }) => setPassword(target.value)}
           />
         </div>
         <button type="submit">login</button>
