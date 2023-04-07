@@ -52,6 +52,15 @@ const App = () => {
     });
   };
   useEffect(hooks, []);
+
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser')
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      setUser(user);
+      noteService.setToken(user.token)
+    }
+  }, [])
   // console.log("render", notes.length, "notes");
 
   // when addnote is clicked
@@ -119,6 +128,7 @@ const App = () => {
       const user = await loginService.login({
         username, password
       })
+      window.localStorage.setItem('loggedNoteappUser', JSON.stringify(user))
       noteService.setToken(user.token)
       setUser(user)
       setUsername('')
@@ -157,13 +167,16 @@ const App = () => {
   )
 
   const noteForm = () => (
-    <form onSubmit={addNote}>
-      <input
-        value={newNote}
-        onChange={handleNoteChange}
-      />
-      <button type="submit">save</button>
-    </form>
+    <div>
+      <form onSubmit={addNote}>
+        <input
+          value={newNote}
+          onChange={handleNoteChange} />
+        <button type="submit">save</button>
+        <button type="primary" onClick={() => { window.localStorage.removeItem('loggedNoteappUser'); setUser(""); }}>logout</button>
+      </form>
+
+    </div>
   )
 
 
@@ -193,11 +206,6 @@ const App = () => {
           />
         ))}
       </ul>
-
-      <form onSubmit={addNote}>
-        <input value={newNote} onChange={handleNoteChange} />
-        <button type="submit"> save</button>
-      </form>
 
       <Footer />
     </div>
