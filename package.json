@@ -4,11 +4,11 @@
   "description": "## Exercises - [ ] exercise 5.1 - [ ] exercise 5.2 - [ ] exercise 5.3 - [ ] exercise 5.4 - [ ] exercise 5.5 - [ ] exercise 5.6 - [ ] exercise 5.7 - [ ] exercise 5.8 - [ ] exercise 5.9 - [ ] exercise 5.10 - [ ] exercise 5.11 - [ ] exercise 5.12 - [ ] exercise 5.13 - [ ] exercise 5.14 - [ ] exercise 5.15 - [ ] exercise 5.16 - [ ] exercise 5.17 - [ ] exercise 5.18 - [ ] exercise 5.19 - [ ] exercise 5.20 - [ ] exercise 5.21 - [ ] exercise 5.22 - [ ] exercise 5.23",
   "main": "index.js",
   "scripts": {
-    "start:exercise": "NODE_ENV=production node exercises/bloglist/index.js",
-    "start:practice": "cd practices/part2-notes && WATCHPACK_POLLING=true react-scripts start",
-    "server:practice": "cd practices/part2-notes && json-server -p3001 --watch db.json",
-    "dev:exercise": "NODE_ENV=development nodemon -L exercises/bloglist/index.js",
-    "dev:practice": "NODE_ENV=development nodemon -L practice/part4_backend/index.js",
+    "client:exercise": "NODE_ENV=production node exercises/bloglist/index.js",
+    "client:practice": "cd practices/part2-notes && vite",
+    "client-old:practice": "cd practices/part2-notes && json-server -p3001 --watch db.json",
+    "server:exercise": "NODE_ENV=development nodemon -L exercises/bloglist/index.js",
+    "server:practice": "NODE_ENV=development nodemon -L practice/part4_backend/index.js",
     "test:exercise": "NODE_ENV=test jest exercises/bloglist/tests/blog_api.test.js --verbose --runInBand --forceExit",
     "test:practice": "NODE_ENV=test jest practice/part4_backend/tests/note_api.test.js --verbose --runInBand --forceExit --detectOpenHandles"
   },
