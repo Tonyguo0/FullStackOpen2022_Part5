@@ -50,6 +50,7 @@ app.get('/api/persons/:id', (req, res) => {
         if (person) res.json(person)
         else {
             res.statusMessage = `person with id ${id} can't be found`
+            // eslint-disable-next-line no-unused-expressions
             res.status(404).end
         }
     })
