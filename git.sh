@@ -1,1 +1,1 @@
-git add . && git commit -am "updated practice from create react app to vite with nx init, fixed proxy issue with vite, " && git push
+git add . && git commit -am "exercise: updated bloglist backend with const returnedUser and pulled bloglist front end" && git push
