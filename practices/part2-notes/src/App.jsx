@@ -128,11 +128,7 @@ const App = () => {
             }, 5000);
         }
     };
-
-    const logout = async (event) => {
-
-    }
-
+    
     const loginForm = () => (
         <form onSubmit={handleLogin}>
             <div>
