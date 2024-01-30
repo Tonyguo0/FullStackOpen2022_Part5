@@ -26,8 +26,8 @@ const App = () => {
                 password
             });
 
+            console.log(user);
             setUser(user);
-            setUsername("");
             setPassword("");
         } catch (exception) {
             alert("Login failed");
@@ -38,35 +38,47 @@ const App = () => {
     const handleLoginOnChange = (event, setName) => {
         setName(event.target.value);
     };
-
-    return (
+    return user === null ? (
         <div>
             <h2>Log in to application</h2>
             <form onSubmit={handleLogin}>
-                username
-                <input
-                    value={username}
-                    onChange={(event) => {
-                        handleLoginOnChange(event, setUsername);
-                    }}
-                    type="text"
-                    name="username"
-                />
-                password
-                <input
-                    value={password}
-                    onChange={(event) => {
-                        handleLoginOnChange(event, setPassword);
-                    }}
-                    type="password"
-                    name="password"
-                />
+                <div>
+                    username
+                    <input
+                        value={username}
+                        onChange={(event) => {
+                            handleLoginOnChange(event, setUsername);
+                        }}
+                        type="text"
+                        name="username"
+                    />
+                </div>
+
+                <div>
+                    password
+                    <input
+                        value={password}
+                        onChange={(event) => {
+                            handleLoginOnChange(event, setPassword);
+                        }}
+                        type="password"
+                        name="password"
+                    />
+                </div>
+
                 <button type="submit">login</button>
             </form>
+        </div>
+    ) : (
+        <div>
             <h2>blogs</h2>
-            {blogs.map((blog) => (
-                <Blog key={blog.id} blog={blog} />
-            ))}
+            <div>{user.name} logged in</div>
+            <br />
+            <div>
+                {blogs.map((blog) => (
+                    <Blog key={blog.id} blog={blog} />
+                ))}
+            </div>
         </div>
     );
 };

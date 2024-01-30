@@ -1,7 +1,7 @@
 # FullStackOpen2022_Part5
 
 ## Exercises
-- [ ] exercise 5.1
+- [x] exercise 5.1
 - [ ] exercise 5.2
 - [ ] exercise 5.3
 - [ ] exercise 5.4
