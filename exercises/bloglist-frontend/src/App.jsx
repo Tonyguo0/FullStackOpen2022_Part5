@@ -11,6 +11,7 @@ const App = () => {
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [url, setUrl] = useState("");
+    const [notification, setNotification] = useState(null);
 
     useEffect(() => {
         const getAllBlogs = async () => {
@@ -23,7 +24,9 @@ const App = () => {
     useEffect(() => {
         const loggedInUser = window.localStorage.getItem("loggedInUser");
         if (loggedInUser) {
-            setUser(JSON.parse(loggedInUser));
+            const user = JSON.parse(loggedInUser);
+            setUser(user);
+            blogService.setToken(user.token);
         }
     }, []);
 
@@ -41,6 +44,13 @@ const App = () => {
             setUsername("");
             setPassword("");
         } catch (exception) {
+            setNotification(<h2>
+                wrong username or password
+            </h2>);
+
+            setTimeout(() => {
+                setNotification(null);
+            }, 0);
             alert("Login failed");
             console.error(exception);
         }
@@ -55,24 +65,31 @@ const App = () => {
         setName(event.target.value);
     };
 
-    const handleCreateBlogs = (event) => {
+    const handleCreateBlogs = async (event) => {
         event.preventDefault();
-        const newBlog = {
-            title: title,
-            author: author,
-            url: url
-        };
 
-        const returnedBlogs = blogService.createBlog(newBlog);
-        setBlogs(blogs.concat(returnedBlogs));
-        setTitle("");
-        setAuthor("");
-        setUrl("");
+        try {
+            const newBlog = {
+                title: title,
+                author: author,
+                url: url
+            };
+
+            const returnedBlog = await blogService.createBlog(newBlog);
+            setTitle("");
+            setAuthor("");
+            setUrl("");
+            setBlogs(blogs.concat(returnedBlog));
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     return user === null ? (
         <div>
             <h2>Log in to application</h2>
+            <div>{notification}</div>
+
             <form onSubmit={handleLogin}>
                 <div>
                     username
@@ -104,6 +121,7 @@ const App = () => {
     ) : (
         <div>
             <h2>blogs</h2>
+            <div>{notification}</div>
             <div>
                 {user.name} logged in{" "}
                 <button type="primary" onClick={handleLogout}>

@@ -3,7 +3,7 @@
 ## Exercises
 - [x] exercise 5.1
 - [x] exercise 5.2
-- [ ] exercise 5.3
+- [x] exercise 5.3
 - [ ] exercise 5.4
 - [ ] exercise 5.5
 - [ ] exercise 5.6
