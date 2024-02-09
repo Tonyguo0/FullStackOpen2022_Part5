@@ -2,6 +2,43 @@ import { useState, useEffect } from "react";
 import Blog from "./components/Blog";
 import blogService from "./services/blogs";
 import loginService from "./services/login";
+import { WarningNotification, SuccessNotification } from "./components/Notification";
+
+// const WarningNotification = ({ msg }) => {
+//     if (msg === null) {
+//         return null;
+//     }
+
+//     const notificationstyle = {
+//         color: "red",
+//         background: "lightgrey",
+//         fontSize: "20px",
+//         borderStyle: "solid",
+//         borderRadius: "5px",
+//         padding: "10px",
+//         marginBottom: "10px"
+//     };
+
+//     return <div style={notificationstyle}>{msg}</div>;
+// };
+
+// const SuccessNotification = ({ msg }) => {
+//     if (msg === null) {
+//         return null;
+//     }
+
+//     const notificationstyle = {
+//         color: "green",
+//         background: "lightgrey",
+//         fontSize: "20px",
+//         borderStyle: "solid",
+//         borderRadius: "5px",
+//         padding: "10px",
+//         marginBottom: "10px"
+//     };
+
+//     return <div style={notificationstyle}>{msg}</div>;
+// };
 
 const App = () => {
     const [blogs, setBlogs] = useState([]);
@@ -11,7 +48,8 @@ const App = () => {
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [url, setUrl] = useState("");
-    const [notification, setNotification] = useState(null);
+    const [successNotification, setSuccessNotification] = useState(null);
+    const [warningNotification, setWarningNotification] = useState(null);
 
     useEffect(() => {
         const getAllBlogs = async () => {
@@ -40,18 +78,20 @@ const App = () => {
             });
             window.localStorage.setItem("loggedInUser", JSON.stringify(user));
             setUser(user);
+            setSuccessNotification(`user ${user.name} logged in`);
+            setTimeout(() => {
+                setSuccessNotification(null);
+            }, 5000);
             blogService.setToken(user.token);
             setUsername("");
             setPassword("");
         } catch (exception) {
-            setNotification(<h2>
-                wrong username or password
-            </h2>);
+            setWarningNotification(`wrong username or password`);
 
             setTimeout(() => {
-                setNotification(null);
-            }, 0);
-            alert("Login failed");
+                setWarningNotification(null);
+            }, 5000);
+            // alert("Login failed");
             console.error(exception);
         }
     };
@@ -80,16 +120,24 @@ const App = () => {
             setAuthor("");
             setUrl("");
             setBlogs(blogs.concat(returnedBlog));
+            setSuccessNotification(`a new blog ${returnedBlog.title} by ${returnedBlog.author} added`);
+            setTimeout(() => {
+                setSuccessNotification(null);
+            }, 5000);
         } catch (err) {
             console.error(err);
+            setWarningNotification(`new blog ${newBlog.title} by ${newBlog.author} could not be created`);
+            setTimeout(() => {
+                setWarningNotification(null);
+            }, 5000);
         }
     };
 
     return user === null ? (
         <div>
             <h2>Log in to application</h2>
-            <div>{notification}</div>
-
+            <SuccessNotification msg={successNotification} />
+            <WarningNotification msg={warningNotification} />
             <form onSubmit={handleLogin}>
                 <div>
                     username
@@ -121,7 +169,8 @@ const App = () => {
     ) : (
         <div>
             <h2>blogs</h2>
-            <div>{notification}</div>
+            <SuccessNotification msg={successNotification} />
+            <WarningNotification msg={warningNotification} />
             <div>
                 {user.name} logged in{" "}
                 <button type="primary" onClick={handleLogout}>
