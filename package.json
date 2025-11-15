@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "client:exercise": "cd exercises/bloglist-frontend && vite",
-    "client:practice": "cd practices/part2-notes && vite",
-    "client-old:practice": "cd practices/part2-notes && json-server -p3001 --watch db.json",
+    "client:practice": "cd practice-frontend/part2-notes && vite",
+    "client-old:practice": "cd practice-frontend/part2-notes && json-server -p3001 --watch db.json",
     "server:exercise": "NODE_ENV=development nodemon -L exercises/bloglist/index.js",
-    "server:practice": "NODE_ENV=development nodemon -L practice/part4_backend/index.js",
+    "server:practice": "NODE_ENV=development nodemon -L practice-backend/part4_backend/index.js",
     "test:exercise": "NODE_ENV=test jest exercises/bloglist/tests/blog_api.test.js --verbose --runInBand --forceExit",
-    "test:practice": "NODE_ENV=test jest practice/part4_backend/tests/note_api.test.js --verbose --runInBand --forceExit --detectOpenHandles"
+    "test:practice": "NODE_ENV=test jest practice/part4_backend/tests/note_api.test.js --verbose --runInBand --forceExit --detectOpenHandles",
+    "test:for_testing": "cd practice-backend/part4_backend && node --test"
   },
   "repository": {
     "type": "git",
