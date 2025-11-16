@@ -6,10 +6,7 @@
       "node"
     ]
   },
-  "files": [
-    "node_modules/@nx/react/typings/cssmodule.d.ts",
-    "node_modules/@nx/react/typings/image.d.ts"
-  ],
+  "files": [],
   "exclude": [
     "**/*.spec.ts",
     "**/*.spec.tsx"
