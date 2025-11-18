@@ -13,7 +13,9 @@ const average = (array) => {
     };
     // uses reducer to sum up the array elements and divides by length to get average
     // the second argument to reduce (0) sets the initial sum to 0
-    return array.length === 0 ? 0 : array.reduce(reducer, 0) / array.length;
+    return array.length === 0 
+    ? 0 
+    : array.reduce(reducer, 0) / array.length;
 };
 
 module.exports = {
