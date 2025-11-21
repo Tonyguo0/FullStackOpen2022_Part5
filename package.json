@@ -1,3 +1,4 @@
+
 {
   "name": "fullstackopen2022_part5",
   "version": "1.0.0",
@@ -10,7 +11,7 @@
     "server:exercise": "NODE_ENV=development nodemon -L exercises/bloglist/index.js",
     "server:practice": "NODE_ENV=development nodemon -L practice-backend/part4_backend/index.js",
     "test:exercise": "NODE_ENV=test jest exercises/bloglist/tests/blog_api.test.js --verbose --runInBand --forceExit",
-    "test:practice": "NODE_ENV=test jest practice/part4_backend/tests/note_api.test.js --verbose --runInBand --forceExit --detectOpenHandles",
+    "test:practice": "NODE_ENV=test node --test practice-backend/part4_backend/tests/note_api.test.js ",
     "test:for_testing": "cd practice-backend/part4_backend && node --test"
   },
   "repository": {

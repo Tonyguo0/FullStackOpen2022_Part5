@@ -1,56 +1,62 @@
 //https://fullstackopen.com/en/part4/testing_the_backend#supertest
 
-const { test, after } = require('node:test')
-const mongoose = require('mongoose')
+const assert = require('node:assert');
+const { test, after, beforeEach, describe } = require('node:test');
+const mongoose = require('mongoose');
+
 // test can use the api superagent object to make HTTP requests to the backend
-const supertest = require('supertest')
+const supertest = require('supertest');
 // const bcrypt = require('bcrypt')
 // const User = require('../models/user')
-const app = require('../app')
-const { assert } = require('console')
+const app = require('../app');
 
 // if the server is not already
 // listening for connections then
 // it is bound to an ephemeral port
 // for you so there is no need to
 // keep track of ports.
-const api = supertest(app)
+const api = supertest(app);
 
-// const Note = require('../models/note')
-// const helper = require('./test_helper')
+const Note = require('../models/note');
+const helper = require('./test_helper');
 
 // const logger = require('../utils/logger')
 
-// beforeEach(async () => {
-//   await Note.deleteMany({})
+beforeEach(async () => {
+    await Note.deleteMany({});
 
-//   const noteObjects = helper.initialNotes.map((note) => new Note(note))
-//   const promiseArray = noteObjects.map((note) => note.save())
-//   await Promise.all(promiseArray)
-// })
+    let noteObject = new Note(helper.initialNotes[0]);
+    await noteObject.save();
+
+    noteObject = new Note(helper.initialNotes[1]);
+    await noteObject.save();
+    // const noteObjects = helper.initialNotes.map((note) => new Note(note));
+    // const promiseArray = noteObjects.map((note) => note.save());
+    // await Promise.all(promiseArray);
+});
 
 describe('when there is inititally some notes saved', () => {
-  test('notes are returned as json', async () => {
-    await api
-      .get('/api/notes')
-      .expect(200)
-      .expect('Content-Type', /application\/json/)
-  })
+    test.only('notes are returned as json', async () => {
+        await api
+            .get('/api/notes')
+            .expect(200)
+            .expect('Content-Type', /application\/json/);
+    });
 
-  test('all notes are returned', async () => {
-    const response = await api.get('/api/notes')
+    test.only('all notes are returned', async () => {
+        const response = await api.get('/api/notes');
 
-    assert.strictEqual(response.body.length, 2)
-    // expect(response.body).toHaveLength(helper.initialNotes.length)
-  })
+        assert.strictEqual(response.body.length, helper.initialNotes.length);
+        // expect(response.body).toHaveLength(helper.initialNotes.length)
+    });
 
-  test('a specific note in within the returned notes', async () => {
-    const response = await api.get('/api/notes')
+    test('a specific note in within the returned notes', async () => {
+        const response = await api.get('/api/notes');
 
-    const contents = response.body.map((r) => r.content)
-    assert.strictEqual(contents.includes('HTML is easy'), true)
-  })
-})
+        const contents = response.body.map((r) => r.content);
+        assert.strictEqual(contents.includes('HTML is easy'), true);
+    });
+});
 
 // describe('viewing a specific note', () => {
 //   test('succeeds with a valid id', async () => {
@@ -188,6 +194,6 @@ describe('when there is inititally some notes saved', () => {
 
 // })
 
-after(async() => {
-  await mongoose.connection.close()
-})
+after(async () => {
+    await mongoose.connection.close();
+});

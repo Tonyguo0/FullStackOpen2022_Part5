@@ -1,40 +1,40 @@
-const Note = require('../models/note')
-const User = require('../models/user')
+const Note = require('../models/note');
+const User = require('../models/user');
 
 const initialNotes = [
-  {
-    content: 'HTML is easy',
-    date: new Date(),
-    important: false,
-  },
-  {
-    content: 'Browser can execute only Javascript',
-    date: new Date(),
-    important: true,
-  },
-]
+    {
+        content: 'HTML is easy',
+        date: new Date(),
+        important: false
+    },
+    {
+        content: 'Browser can execute only Javascript',
+        date: new Date(),
+        important: true
+    }
+];
 
 const nonExistingId = async () => {
-  const note = new Note({ content: 'willremovethissoon', date: new Date() })
-  await note.save()
-  await note.remove()
+    const note = new Note({ content: 'willremovethissoon', date: new Date() });
+    await note.save();
+    await note.remove();
 
-  return note._id.toString()
-}
+    return note._id.toString();
+};
 
 const notesInDb = async () => {
-  const notes = await Note.find({})
-  return notes
-}
+    const notes = await Note.find({});
+    return notes;
+};
 
 const usersInDb = async () => {
-  const users = await User.find({})
-  return users.map((u) => u.toJSON())
-}
+    const users = await User.find({});
+    return users.map((u) => u.toJSON());
+};
 
 module.exports = {
-  initialNotes,
-  nonExistingId,
-  notesInDb,
-  usersInDb,
-}
+    initialNotes,
+    nonExistingId,
+    notesInDb,
+    usersInDb
+};
