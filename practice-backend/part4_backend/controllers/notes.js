@@ -27,8 +27,7 @@ notesRouter.get('/:id', async (request, response) => {
 });
 
 notesRouter.delete('/:id', async (request, response) => {
-    const id = request.params.id;
-    const note = await Note.findByIdAndRemove(id);
+    const note = await Note.findByIdAndRemove(request.params.id);
 
     response.status(204).json(note);
 });
@@ -82,11 +81,14 @@ notesRouter.post('/', async (request, response) => {
         user: user._id
     });
 
+    //starting express 5
+    //it automatically call the error handling if await throws an error
+    //or the awaited promise is rejected
     const savedNote = await note.save();
     user.notes = user.notes.concat(savedNote._id);
     await user.save();
 
-    response.json(savedNote);
+    response.status(201).json(savedNote);
 });
 
 module.exports = notesRouter;

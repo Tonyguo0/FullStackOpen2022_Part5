@@ -17,14 +17,14 @@ const initialNotes = [
 const nonExistingId = async () => {
     const note = new Note({ content: 'willremovethissoon', date: new Date() });
     await note.save();
-    await note.remove();
+    await note.deleteOne();
 
     return note._id.toString();
 };
 
 const notesInDb = async () => {
     const notes = await Note.find({});
-    return notes;
+    return notes.map((note) => note.toJSON());
 };
 
 const usersInDb = async () => {

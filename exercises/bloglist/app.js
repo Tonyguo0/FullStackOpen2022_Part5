@@ -1,6 +1,9 @@
 const config = require('./utils/config')
 const express = require('express')
-require('express-async-errors')
+// this is used to eliminate the use of try and catch next(err) in the route handlers
+// this won't be needed once we move to express 5
+//
+// require('express-async-errors')
 const app = express()
 const cors = require('cors')
 

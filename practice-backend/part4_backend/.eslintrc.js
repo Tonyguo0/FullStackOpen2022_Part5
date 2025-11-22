@@ -1,3 +1,8 @@
+// TODO: part 3d - configure ESLint for the backend
+// use new ESLint/js module syntax to export the configuration object
+// which uses
+// "@eslint/js": "^9.22.0",
+// "eslint": "^9.22.0"
 module.exports = {
     env: {
         commonjs: true,
