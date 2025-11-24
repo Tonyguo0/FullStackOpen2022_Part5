@@ -8,6 +8,7 @@ const app = express();
 const cors = require('cors');
 const logger = require('./utils/logger');
 const mongoose = require('mongoose');
+mongoose.set('strictQuery', true);
 
 const notesRouter = require('./controllers/notes');
 const usersRouter = require('./controllers/users');

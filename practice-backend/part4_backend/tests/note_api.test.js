@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 
 // test can use the api superagent object to make HTTP requests to the backend
 const supertest = require('supertest');
-// const bcrypt = require('bcrypt')
-// const User = require('../models/user')
+const bcrypt = require('bcrypt');
+const User = require('../models/user');
 const app = require('../app');
 const helper = require('./test_helper');
 const Note = require('../models/note');
@@ -182,64 +182,61 @@ describe('deletion of a note', () => {
     });
 });
 
-//TODO: fix these user tests
-// describe.only('when there is initially one user in db', () => {
-//     beforeEach(async () => {
-//         await User.deleteMany({});
+describe.only('when there is initially one user in db', () => {
+    beforeEach(async () => {
+        await User.deleteMany({});
 
-//         const passwordHash = await bcrypt.hash('sekret', 10);
-//         const user = new User({ username: 'root', passwordHash });
-//         await user.save();
-//     });
+        const passwordHash = await bcrypt.hash('sekret', 10);
+        const user = new User({ username: 'root', passwordHash });
 
-//     test('creation succeeds with a fresh username', async () => {
-//         const usersAtStart = await helper.usersInDb();
+        await user.save();
+    });
 
-//         const newUser = {
-//             username: 'mluukkai',
-//             name: 'Matti Luukainen',
-//             password: 'salainen'
-//         };
+    test('creation succeeds with a fresh username', async () => {
+        const usersAtStart = await helper.usersInDb();
 
-//         await api
-//             .post('/api/users')
-//             .send(newUser)
-//             .expect(201)
-//             .expect('Content-Type', /application\/json/);
+        const newUser = {
+            username: 'mluukkai',
+            name: 'Matti Luukainen',
+            password: 'salainen'
+        };
 
-//         const usersAtEnd = await helper.usersInDb();
-//         expect(usersAtEnd).toHaveLength(usersAtStart.length + 1);
+        await api
+            .post('/api/users')
+            .send(newUser)
+            .expect(201)
+            .expect('Content-Type', /application\/json/);
 
-//         const usernames = usersAtEnd.map((u) => u.username);
-//         expect(usernames).toContain(newUser.username);
-//     });
+        const usersAtEnd = await helper.usersInDb();
+        assert.strictEqual(usersAtEnd.length, usersAtStart.length + 1);
 
-//     test.only('creation fails with proper statuscode and message if username is already in the db', async () => {
-//         jest.setTimeout(10000);
+        const usernames = usersAtEnd.map((u) => u.username);
+        assert(usernames.includes(newUser.username));
+    });
 
-//         const usersAtStart = await helper.usersInDb();
-//         logger.info(`user at the start is ${usersAtStart}`);
+    test('creation fails with proper statuscode and message if username is already in the db', async () => {
+        const usersAtStart = await helper.usersInDb();
 
-//         const newUser = {
-//             username: 'root',
-//             name: 'Superuser',
-//             password: 'salainen'
-//         };
-//         // rn this is completing but is a socket error because the express-async-errors package isn't working
-//         const result = await api
-//             .post('/api/users')
-//             .send(newUser)
-//             .expect(400)
-//             .expect('Content-Type', /application\/json/);
+        const newUser = {
+            username: 'root',
+            name: 'Superuser',
+            password: 'salainen'
+        };
 
-//         logger.info(`actual result is ${result}`);
-//         logger.info(`actual result.message is ${result.message}`);
-//         expect(result.body.error).toContain('expected `username` to be unique');
+        // this is now fixed in middleware.js errorHandler, express-async-errors is not needed
+        // rn this is completing but is a socket error because the express-async-errors package isn't working
+        const result = await api
+            .post('/api/users')
+            .send(newUser)
+            .expect(400)
+            .expect('Content-Type', /application\/json/);
 
-//         const usersAtEnd = await helper.usersInDb();
-//         expect(usersAtEnd).toEqual(usersAtStart);
-//     });
-// });
+        const usersAtEnd = await helper.usersInDb();
+
+        assert(result.body.error.includes('expected `username` to be unique'));
+        assert.strictEqual(usersAtEnd.length, usersAtStart.length);
+    });
+});
 
 after(async () => {
     await mongoose.connection.close();

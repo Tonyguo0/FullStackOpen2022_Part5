@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
     username: {
         type: String,
         required: true,
-        unique: true
+        unique: true // this ensures the uniqueness of username
     },
     name: String,
     passwordHash: String,
@@ -20,7 +20,7 @@ const userSchema = mongoose.Schema({
 userSchema.plugin(uniqueValidator, { type: 'mongoose-unique-validator' });
 
 userSchema.set('toJSON', {
-    transform: (document, returnedObject) => {
+    transform: (_document, returnedObject) => {
         returnedObject.id = returnedObject._id.toString();
         delete returnedObject._id;
         delete returnedObject.__v;

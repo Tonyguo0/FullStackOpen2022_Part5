@@ -1,6 +1,6 @@
 const Blog = require('../models/bloglist')
 const logger = require('../utils/logger')
-bloginitiated = [
+const bloginitiated = [
   {
     title: '10 things in JavaScript I love',
     author: 'Tony',
