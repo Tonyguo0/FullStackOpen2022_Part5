@@ -3,11 +3,20 @@ const usersRouter = require('express').Router();
 const User = require('../models/user');
 
 usersRouter.get('/', async (request, response) => {
-    const users = await User.find({});
-    // .populate('notes', {
-    //     content: 1,
-    //     important: 1
-    // });
+    // Mongoose first queires the users collection for all user documents
+    const users = await User.find({})
+        // argument given to the populate method defines that
+        // the ids referencing note objects
+        // in the notes field of the user document
+        // will be replaced by the reference note documents
+        .populate(
+            'notes',
+            // select only the content and important fields of the note documents to display
+            {
+                content: 1,
+                important: 1
+            }
+        );
     response.json(users);
 });
 

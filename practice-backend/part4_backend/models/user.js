@@ -9,6 +9,9 @@ const userSchema = mongoose.Schema({
     },
     name: String,
     passwordHash: String,
+    //The functionality of the populate method of Mongoose
+    // is based on the fact that we have defined "types"
+    // to the references in the Mongoose schema with the ref option:
     notes: [
         {
             type: mongoose.Schema.Types.ObjectId,

@@ -10,6 +10,8 @@ notesRouter.get('/helloworld', (_request, response) => {
 
 notesRouter.get('/', async (_request, response) => {
     const note = await Note.find({})
+        // populate the user field of each note document
+        // with the referenced corresponding user document
         .populate('user', { username: 1, name: 1 });
     response.json(note);
 });
