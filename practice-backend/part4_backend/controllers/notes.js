@@ -55,11 +55,14 @@ notesRouter.put('/:id', (request, response, next) => {
         });
 });
 
+// helper function to extract the token from the authorization header
 const getTokenFrom = (request) => {
     const authorization = request.get('authorization');
+
     if (authorization && authorization.startsWith('Bearer ')) {
         return authorization.replace('Bearer ', '');
     }
+
     return null;
 };
 
@@ -67,9 +70,13 @@ notesRouter.post('/', async (request, response) => {
     // request.body has the supposed new json request object note that needs to be added using post
     const body = request.body;
     const decodedToken = jwt.verify(getTokenFrom(request), process.env.SECRET);
+
     if (!decodedToken.id) {
-        return response.status(401).json({ error: 'token invalid' });
+        return response.status(401).json({
+            error: 'token invalid'
+        });
     }
+
     const user = await User.findById(decodedToken.id);
 
     if (body.content === undefined) {
