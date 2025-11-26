@@ -28,6 +28,8 @@ loginRouter.post('/', async (req, res) => {
     };
 
     // token expires in 3600 seconds which is 1 hour
+    // we can use server-side session aswell but for this example
+    // but is increase in complexity and effect the performance/scalability
     const token = jwt.sign(userForToken, process.env.SECRET, {
         expiresIn: 60 * 60
     });
