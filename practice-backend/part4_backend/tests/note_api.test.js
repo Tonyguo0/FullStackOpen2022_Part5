@@ -125,11 +125,9 @@ describe('viewing a specific note', () => {
         await api.get(`/api/notes/${invalidId}`).expect(400);
     });
 });
-//TODO: not working atm because of missing token implementation in the tests
+
 describe('addition of a new note', () => {
     test('succeeds with valid data', async () => {
-        //TODO: not working atm because of missing token implementation in the tests
-
         const newNote = {
             content: 'async/await simplifies making async calls',
             important: true
