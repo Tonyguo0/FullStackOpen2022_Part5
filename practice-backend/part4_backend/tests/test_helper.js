@@ -32,9 +32,12 @@ const usersInDb = async () => {
     return users.map((u) => u.toJSON());
 };
 
+const testUserToken = 'your_test_user_token_here';
+
 module.exports = {
     initialNotes,
     nonExistingId,
     notesInDb,
-    usersInDb
+    usersInDb,
+    testUserToken
 };

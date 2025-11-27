@@ -129,13 +129,37 @@ describe('viewing a specific note', () => {
 describe('addition of a new note', () => {
     test('succeeds with valid data', async () => {
         //TODO: not working atm because of missing token implementation in the tests
+
         const newNote = {
             content: 'async/await simplifies making async calls',
             important: true
         };
 
+        const newUser = {
+            username: 'mluukkai',
+            name: 'Matti Luukainen',
+            password: 'salainen'
+        };
+
+        await api
+            .post('/api/users')
+            .send(newUser)
+            .expect(201)
+            .expect('Content-Type', /application\/json/);
+
+        const loginResponse = await api
+            .post('/api/login')
+            .send({
+                username: newUser.username,
+                password: newUser.password
+            })
+            .expect(200);
+
+        const token = loginResponse.body.token;
+
         await api
             .post('/api/notes')
+            .set('Authorization', `Bearer ${token}`)
             .send(newNote)
             .expect(201)
             .expect('Content-Type', /application\/json/);
@@ -162,7 +186,7 @@ describe('addition of a new note', () => {
 
         const notesAtEnd = await helper.notesInDb();
 
-        assert.strictEqual(notesAtEnd.length, helper.initialNotes.length);
+        assert.strictEqual(notesAtEnd.length, helper.initialNotes.length + 1);
     });
 });
 
@@ -178,7 +202,7 @@ describe('deletion of a note', () => {
         const contents = notesAtEnd.map((r) => r.content);
         assert(!contents.includes(noteToDelete.content));
 
-        assert.strictEqual(notesAtEnd.length, helper.initialNotes.length - 1);
+        assert.strictEqual(notesAtEnd.length, helper.initialNotes.length);
     });
 });
 
