@@ -4,7 +4,7 @@
   "semi": true,
   "singleQuote": false,
   "doubleQuote": true,
-  "printWidth": 500,
+  "printWidth": 80,
   "arrowParens": "always",
   "endOfLine": "auto"
 }
