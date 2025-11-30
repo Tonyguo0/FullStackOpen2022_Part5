@@ -90,7 +90,7 @@ const App = () => {
         setNewNote(event.target.value);
     };
 
-    // clicking on show important button triggers the ternary operator here 
+    // clicking on show important button triggers the ternary operator here
     // at render to make note into whatever based on showAll state is true or false by filtering
     useEffect(() => {
         setNotesToShow(
@@ -135,10 +135,17 @@ const App = () => {
             // so that the user remains logged in even after refreshing the page
             // we save the user as a stringified JSON object
             // we can retrieve it and parse it back to object when needed
+
+            //TODO: best practice is to save the signed in user as httpOnly cookie
+            // but for the sake of this example, we will use local storage
+            // but the thing is it would make implementating SPA applcations a bit more complex
+            // we need to at least implement a seperate page for login in
             window.localStorage.setItem(
                 "loggedNoteappUser",
                 JSON.stringify(user)
             );
+            // need to set the token for the noteService to authenticate requests with successful login
+
             noteService.setToken(user.token);
             setUser(user);
             setUsername("");
