@@ -3,6 +3,7 @@ import Note from "./components/Note";
 import noteService from "./services/notes";
 import { useState, useEffect } from "react";
 import loginService from "./services/login";
+import LoginForm from "./components/Login";
 
 // TODO: refactor all components into separate files
 const Footer = () => {
@@ -33,6 +34,7 @@ const Notification = ({ message }) => {
 };
 
 const App = () => {
+    const [loginVisible, setLoginVisible] = useState(false);
     const [notes, setNotes] = useState([]);
     const [newNote, setNewNote] = useState("a new note...");
     const [showAll, setShowAll] = useState(true);
@@ -136,10 +138,10 @@ const App = () => {
             // we save the user as a stringified JSON object
             // we can retrieve it and parse it back to object when needed
 
-            //TODO: best practice is to save the signed in user as httpOnly cookie
+            // good todo: best practice is to save the signed in user as httpOnly cookie
             // but for the sake of this example, we will use local storage
-            // but the thing is it would make implementating SPA applcations a bit more complex
-            // we need to at least implement a seperate page for login in
+            // but the thing is it would make implementing SPA applications a bit more complex
+            // we need to at least implement a separate page for logging in
             window.localStorage.setItem(
                 "loggedNoteappUser",
                 JSON.stringify(user)
@@ -158,41 +160,41 @@ const App = () => {
         }
     };
 
-    const loginForm = () => (
-        <form onSubmit={handleLogin}>
+    const loginForm = () => {
+        // display styles for toggling login form visibility
+        const hideWhenVisible = { display: loginVisible ? "none" : "" };
+        const showWhenVisible = { display: loginVisible ? "" : "none" };
+
+        return (
             <div>
-                {/* label is used in forms to describe and name input fields */}
-                {/* this way the screen reader can read the field's name to the user */}
-                {/* using label element with input fields is always recommended */}
-                <label>
-                    username
-                    <input
-                        type="text"
-                        value={username}
-                        name="Username"
-                        // Object destructuring the Onchange event object to get target value
-                        // from the event object
-                        // and set it as the new username state
-                        // we could also do it without destructuring as below:
-                        // onChange={(event) => setUsername(event.target.value)}
-                        onChange={({ target }) => setUsername(target.value)}
+                <div style={hideWhenVisible}>
+                    {/* button to show the login form
+                     when clicked, set loginVisible to true */}
+
+                    <button onClick={() => setLoginVisible(true)}>
+                        log in
+                    </button>
+                </div>
+                <div style={showWhenVisible}>
+                    <LoginForm
+                        username={username}
+                        password={password}
+                        handleUsernameChange={({ target }) =>
+                            setUsername(target.value)
+                        }
+                        handlePasswordChange={({ target }) =>
+                            setPassword(target.value)
+                        }
+                        handleSubmit={handleLogin}
                     />
-                </label>
+                    {/* button to set login form to not visible */}
+                    <button onClick={() => setLoginVisible(false)}>
+                        cancel
+                    </button>
+                </div>
             </div>
-            <div>
-                <label>
-                    password
-                    <input
-                        type="password"
-                        value={password}
-                        name="Password"
-                        onChange={({ target }) => setPassword(target.value)}
-                    />
-                </label>
-            </div>
-            <button type="submit">login</button>
-        </form>
-    );
+        );
+    };
 
     const noteForm = () => (
         <div>
