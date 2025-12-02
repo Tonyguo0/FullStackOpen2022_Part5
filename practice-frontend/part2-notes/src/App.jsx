@@ -4,6 +4,8 @@ import noteService from "./services/notes";
 import { useState, useEffect } from "react";
 import loginService from "./services/login";
 import LoginForm from "./components/Login";
+import Togglable from "./components/Togglable";
+import NoteForm from "./components/NoteForm";
 
 // TODO: refactor all components into separate files
 const Footer = () => {
@@ -112,7 +114,7 @@ const App = () => {
                     notes.map((note) => (note.id === id ? returnedNote : note))
                 );
             })
-            .catch((error) => {
+            .catch((_error) => {
                 console.log(`inside the error`);
                 setErrorMessage(
                     `Note '${note.content}' was already removed from server`
@@ -195,7 +197,8 @@ const App = () => {
             </div>
         );
     };
-
+    //TODO: delete this noteForm function since we are using NoteForm component now
+    // but keep the logout button inside
     const noteForm = () => (
         <div>
             <form onSubmit={addNote}>
@@ -229,7 +232,23 @@ const App = () => {
             {user && (
                 <div>
                     <p>{user.name} logged in</p>
-                    {noteForm()}
+                    <Togglable buttonLabel="new note">
+                        <NoteForm
+                            onSubmit={addNote}
+                            handleChange={handleNoteChange}
+                            value={newNote}
+                        />
+                    </Togglable>
+                    <button
+                        type="primary"
+                        onClick={() => {
+                            // clear the local storage to log out the user
+                            window.localStorage.clear();
+                            setUser("");
+                        }}
+                    >
+                        logout
+                    </button>
                 </div>
             )}
 
