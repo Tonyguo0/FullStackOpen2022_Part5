@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-const Togglable = (props) => {
+// remember it's props.children to pass components as props
+// and they're just destructured here
+const Togglable = ({ buttonLabel, children }) => {
     const [visible, setVisible] = useState(false);
 
     const hideWhenVisible = { display: visible ? " none" : "" };
@@ -13,10 +15,11 @@ const Togglable = (props) => {
     return (
         <div>
             <div style={hideWhenVisible}>
-                <button onClick={toggleVisiblity}>{props.buttonLabel}</button>
+                <button onClick={toggleVisiblity}>{buttonLabel}</button>
             </div>
             <div style={showWhenVisible}>
-                {props.children}
+                {/* remember what props.children actually do */}
+                {children}
                 <button onClick={toggleVisiblity}>cancel</button>
             </div>
         </div>

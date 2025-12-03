@@ -1,44 +1,17 @@
 // cd FullStackOpen2022_Part2/practices/part2-notes
-import Note from "./components/Note";
-import noteService from "./services/notes";
-import { useState, useEffect } from "react";
-import loginService from "./services/login";
+import { useEffect, useState } from "react";
+import Footer from "./components/Footer";
 import LoginForm from "./components/Login";
-import Togglable from "./components/Togglable";
+import Note from "./components/Note";
 import NoteForm from "./components/NoteForm";
-
-// TODO: refactor all components into separate files
-const Footer = () => {
-    const footerStyle = {
-        color: "green",
-        fontStyle: "italic",
-        fontSize: 16
-    };
-
-    return (
-        <div style={footerStyle}>
-            <br />
-            <em>
-                {" "}
-                Note app, Department of Computer Science, University of Helsinki
-                2022
-            </em>
-        </div>
-    );
-};
-
-const Notification = ({ message }) => {
-    if (message === null) {
-        return null;
-    }
-
-    return <div className="error">{message}</div>;
-};
+import Notification from "./components/Notification";
+import Togglable from "./components/Togglable";
+import loginService from "./services/login";
+import noteService from "./services/notes";
 
 const App = () => {
     const [loginVisible, setLoginVisible] = useState(false);
     const [notes, setNotes] = useState([]);
-    const [newNote, setNewNote] = useState("a new note...");
     const [showAll, setShowAll] = useState(true);
     const [notestoshow, setNotesToShow] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
@@ -69,29 +42,12 @@ const App = () => {
     // console.log("render", notes.length, "notes");
 
     // when addnote is clicked
-    const addNote = (event) => {
-        event.preventDefault();
-        const noteObject = {
-            content: newNote,
-            date: new Date().toISOString(),
-            important: Math.random() < 0.5,
-            id: notes.length + 1
-        };
-
+    const addNote = (noteObject) => {
         // post the new note to the server, then set the notes into the notes object,
         // then set the New Note to empty which links with the input field
         noteService.create(noteObject).then((returnedNote) => {
             setNotes(notes.concat(returnedNote));
-            setNewNote("");
         });
-        // setNotes(notes.concat(noteObject));
-        // setNewNote("");
-    };
-
-    // NewNote is set after a value in input into the input field
-    const handleNoteChange = (event) => {
-        console.log(event.target.value);
-        setNewNote(event.target.value);
     };
 
     // clicking on show important button triggers the ternary operator here
@@ -163,6 +119,7 @@ const App = () => {
     };
 
     const loginForm = () => {
+        // TODO: improve the login form to adapt to the togglable component
         // display styles for toggling login form visibility
         const hideWhenVisible = { display: loginVisible ? "none" : "" };
         const showWhenVisible = { display: loginVisible ? "" : "none" };
@@ -201,21 +158,10 @@ const App = () => {
     // but keep the logout button inside
     const noteForm = () => (
         <div>
-            <form onSubmit={addNote}>
-                <input value={newNote} onChange={handleNoteChange} />
-                <button type="submit">save</button>
-                <button
-                    type="primary"
-                    onClick={() => {
-                        // clear the local storage to log out the user
-                        window.localStorage.clear();
-                        setUser("");
-                    }}
-                >
-                    {/* logout button clears local storage and resets user state */}
-                    logout
-                </button>
-            </form>
+            {/* button label to create a new note */}
+            <Togglable buttonLabel="new note">
+                <NoteForm createNote={addNote} />
+            </Togglable>
         </div>
     );
 
@@ -231,24 +177,20 @@ const App = () => {
             {!user && loginForm()}
             {user && (
                 <div>
+                    {/* this is all user logged in handling */}
                     <p>{user.name} logged in</p>
-                    <Togglable buttonLabel="new note">
-                        <NoteForm
-                            onSubmit={addNote}
-                            handleChange={handleNoteChange}
-                            value={newNote}
-                        />
-                    </Togglable>
                     <button
                         type="primary"
                         onClick={() => {
                             // clear the local storage to log out the user
                             window.localStorage.clear();
-                            setUser("");
+                            setUser(null);
                         }}
                     >
                         logout
                     </button>
+                    {/* note form here */}
+                    {noteForm()}
                 </div>
             )}
 
