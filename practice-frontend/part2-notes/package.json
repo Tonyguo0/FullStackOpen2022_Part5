@@ -6,8 +6,8 @@
     "@swc/helpers": "~0.5.2",
     "@testing-library/user-event": "^14.1.1",
     "axios": "^0.27.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
     "react-scripts": "5.0.1"
   },
   "scripts": {
@@ -66,6 +66,7 @@
     "json-server": "^0.17.0",
     "nx": "17.2.8",
     "typescript": "~5.2.2",
+    
     "vite": "^5.0.12",
     "vitest": "^0.34.6",
     "web-vitals": "^3.5.1"
