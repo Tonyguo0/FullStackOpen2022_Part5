@@ -2,7 +2,7 @@ import { useState, useImperativeHandle, forwardRef } from "react";
 
 // remember it's props.children to pass components as props
 // and they're just destructured here
-const Togglable = ({ buttonLabel, children, ref }) => {
+const Togglable = forwardRef(({ buttonLabel, children }, ref) => {
     const [visible, setVisible] = useState(false);
 
     const hideWhenVisible = { display: visible ? " none" : "" };
@@ -30,6 +30,6 @@ const Togglable = ({ buttonLabel, children, ref }) => {
             </div>
         </div>
     );
-};
+});
 
 export default Togglable;
