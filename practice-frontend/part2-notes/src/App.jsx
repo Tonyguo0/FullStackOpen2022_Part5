@@ -1,5 +1,5 @@
 // cd FullStackOpen2022_Part2/practices/part2-notes
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Footer from "./components/Footer";
 import LoginForm from "./components/Login";
 import Note from "./components/Note";
@@ -10,7 +10,6 @@ import loginService from "./services/login";
 import noteService from "./services/notes";
 
 const App = () => {
-    const [loginVisible, setLoginVisible] = useState(false);
     const [notes, setNotes] = useState([]);
     const [showAll, setShowAll] = useState(true);
     const [notestoshow, setNotesToShow] = useState([]);
@@ -18,6 +17,10 @@ const App = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [user, setUser] = useState(null);
+    // the noteFormRef variable acts as a reference to the Togglable component for the note form
+    // this hook ensures that we can access the Togglable component's methods and properties from
+    // within the App component
+    const noteFormRef = useRef();
 
     // get all notes from url with useEffect hook
     const hooks = () => {
@@ -43,6 +46,7 @@ const App = () => {
 
     // when addnote is clicked
     const addNote = (noteObject) => {
+        noteFormRef.current.toggleVisibility();
         // post the new note to the server, then set the notes into the notes object,
         // then set the New Note to empty which links with the input field
         noteService.create(noteObject).then((returnedNote) => {
@@ -118,51 +122,27 @@ const App = () => {
         }
     };
 
-    const loginForm = () => {
+    const loginForm = () => (
         // TODO: improve the login form to adapt to the togglable component
         // display styles for toggling login form visibility
-        const hideWhenVisible = { display: loginVisible ? "none" : "" };
-        const showWhenVisible = { display: loginVisible ? "" : "none" };
 
-        return (
-            <div>
-                <div style={hideWhenVisible}>
-                    {/* button to show the login form
-                     when clicked, set loginVisible to true */}
-
-                    <button onClick={() => setLoginVisible(true)}>
-                        log in
-                    </button>
-                </div>
-                <div style={showWhenVisible}>
-                    <LoginForm
-                        username={username}
-                        password={password}
-                        handleUsernameChange={({ target }) =>
-                            setUsername(target.value)
-                        }
-                        handlePasswordChange={({ target }) =>
-                            setPassword(target.value)
-                        }
-                        handleSubmit={handleLogin}
-                    />
-                    {/* button to set login form to not visible */}
-                    <button onClick={() => setLoginVisible(false)}>
-                        cancel
-                    </button>
-                </div>
-            </div>
-        );
-    };
+        <Togglable buttonLabel="log in">
+            <LoginForm
+                username={username}
+                password={password}
+                handleUsernameChange={({ target }) => setUsername(target.value)}
+                handlePasswordChange={({ target }) => setPassword(target.value)}
+                handleSubmit={handleLogin}
+            />
+        </Togglable>
+    );
     //TODO: delete this noteForm function since we are using NoteForm component now
     // but keep the logout button inside
     const noteForm = () => (
-        <div>
-            {/* button label to create a new note */}
-            <Togglable buttonLabel="new note">
-                <NoteForm createNote={addNote} />
-            </Togglable>
-        </div>
+        //  button label to create a new note
+        <Togglable buttonLabel="new note" ref={noteFormRef}>
+            <NoteForm createNote={addNote} />
+        </Togglable>
     );
 
     return (
