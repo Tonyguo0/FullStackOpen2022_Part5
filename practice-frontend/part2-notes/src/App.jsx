@@ -173,6 +173,11 @@ const App = () => {
                     {noteForm()}
                 </div>
             )}
+            <div>
+                <Togglable buttonLabel="1">First</Togglable>
+                <Togglable buttonLabel="2">Second</Togglable>
+                <Togglable buttonLabel="3">Third</Togglable>
+            </div>
 
             <div>
                 <button onClick={() => setShowAll(!showAll)}>
