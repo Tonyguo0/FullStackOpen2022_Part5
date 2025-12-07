@@ -1,4 +1,3 @@
-
 // instead of writing props.handleSubmit, props.handleUsernameChange etc.
 // we can destructure the props object in the function parameter itself:
 const LoginForm = ({

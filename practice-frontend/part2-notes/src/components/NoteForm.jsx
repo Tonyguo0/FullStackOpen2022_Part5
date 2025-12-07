@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const NoteForm = ({ createNote }) => {
-    const [newNote, setNewNote] = useState("a new note...");
+    const [newNote, setNewNote] = useState('a new note...');
 
     const addNote = (event) => {
         event.preventDefault();
@@ -12,7 +12,7 @@ const NoteForm = ({ createNote }) => {
             // before: Math.random() < 0.5
             important: true
         });
-        setNewNote("");
+        setNewNote('');
     };
 
     return (

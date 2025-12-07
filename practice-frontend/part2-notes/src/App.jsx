@@ -1,21 +1,21 @@
 // cd FullStackOpen2022_Part2/practices/part2-notes
-import { useEffect, useState, useRef } from "react";
-import Footer from "./components/Footer";
-import LoginForm from "./components/Login";
-import Note from "./components/Note";
-import NoteForm from "./components/NoteForm";
-import Notification from "./components/Notification";
-import Togglable from "./components/Togglable";
-import loginService from "./services/login";
-import noteService from "./services/notes";
+import { useEffect, useState, useRef } from 'react';
+import Footer from './components/Footer';
+import LoginForm from './components/Login';
+import Note from './components/Note';
+import NoteForm from './components/NoteForm';
+import Notification from './components/Notification';
+import Togglable from './components/Togglable';
+import loginService from './services/login';
+import noteService from './services/notes';
 
 const App = () => {
     const [notes, setNotes] = useState([]);
     const [showAll, setShowAll] = useState(true);
     const [notestoshow, setNotesToShow] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const [user, setUser] = useState(null);
     // the noteFormRef variable acts as a reference to the Togglable component for the note form
     // this hook ensures that we can access the Togglable component's methods and properties from
@@ -35,7 +35,7 @@ const App = () => {
         // check if user is logged in by looking at local storage
         // if found, parse the user and SET the user state and token
         // for the note service
-        const loggedUserJSON = window.localStorage.getItem("loggedNoteappUser");
+        const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser');
         if (loggedUserJSON) {
             const user = JSON.parse(loggedUserJSON);
             setUser(user);
@@ -105,17 +105,17 @@ const App = () => {
             // but the thing is it would make implementing SPA applications a bit more complex
             // we need to at least implement a separate page for logging in
             window.localStorage.setItem(
-                "loggedNoteappUser",
+                'loggedNoteappUser',
                 JSON.stringify(user)
             );
             // need to set the token for the noteService to authenticate requests with successful login
 
             noteService.setToken(user.token);
             setUser(user);
-            setUsername("");
-            setPassword("");
+            setUsername('');
+            setPassword('');
         } catch (exception) {
-            setErrorMessage("Wrong credentials");
+            setErrorMessage('Wrong credentials');
             setTimeout(() => {
                 setErrorMessage(null);
             }, 5000);
@@ -181,7 +181,7 @@ const App = () => {
 
             <div>
                 <button onClick={() => setShowAll(!showAll)}>
-                    show {showAll ? "important" : "all"}
+                    show {showAll ? 'important' : 'all'}
                 </button>
             </div>
             <ul>
