@@ -1,75 +1,75 @@
 {
-  "name": "fullstackopen2022_part5",
-  "version": "1.0.0",
-  "description": "## Exercises - [ ] exercise 5.1 - [ ] exercise 5.2 - [ ] exercise 5.3 - [ ] exercise 5.4 - [ ] exercise 5.5 - [ ] exercise 5.6 - [ ] exercise 5.7 - [ ] exercise 5.8 - [ ] exercise 5.9 - [ ] exercise 5.10 - [ ] exercise 5.11 - [ ] exercise 5.12 - [ ] exercise 5.13 - [ ] exercise 5.14 - [ ] exercise 5.15 - [ ] exercise 5.16 - [ ] exercise 5.17 - [ ] exercise 5.18 - [ ] exercise 5.19 - [ ] exercise 5.20 - [ ] exercise 5.21 - [ ] exercise 5.22 - [ ] exercise 5.23",
-  "main": "index.js",
-  "scripts": {
-    "client:exercise": "cd exercises/bloglist-frontend && vite",
-    "client:practice": "cd practice-frontend/part2-notes && vite",
-    "client:practice-lint": "cd practice-frontend/part2-notes && npm run lint",
-    "client:practice-lint-fix": "cd practice-frontend/part2-notes && npm run lint:fix",
-    "client-old:practice": "cd practice-frontend/part2-notes && json-server -p3001 --watch db.json",
-    "server:exercise": "NODE_ENV=development nodemon -L exercises/bloglist/index.js",
-    "server:practice": "NODE_ENV=development nodemon -L practice-backend/part4_backend/index.js",
-    "test:exercise": "NODE_ENV=test jest exercises/bloglist/tests/blog_api.test.js --verbose --runInBand --forceExit",
-    "test:practice": "NODE_ENV=test node --test practice-backend/part4_backend/tests/note_api.test.js ",
-    "test:for_testing": "cd practice-backend/part4_backend && node --test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Tonyguo0/FullStackOpen2022_Part5.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Tonyguo0/FullStackOpen2022_Part5/issues"
-  },
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^14.1.1",
-    "@vitejs/plugin-react": "^4.2.1",
-    "axios": "^0.27.2",
-    "bcrypt": "^5.1.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.1",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.0",
-    "mongoose": "^6.4.5",
-    "mongoose-unique-validator": "^3.1.0",
-    "morgan": "^1.10.0",
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1",
-    "react-scripts": "5.0.1",
-    "vite": "^5.0.12",
-    "web-vitals": "^2.1.4"
-  },
-  "proxy": "http://localhost:3001",
-  "devDependencies": {
-    "eslint": "^8.23.0",
-    "jest": "^29.3.1",
-    "json-server": "^1.0.0-beta.3",
-    "nodemon": "^2.0.18",
-    "shx": "^0.3.4",
-    "supertest": "^6.3.3"
-  },
-  "homepage": "https://github.com/Tonyguo0/FullStackOpen2022_Part5#readme",
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "fullstackopen2022_part5",
+    "version": "1.0.0",
+    "description": "## Exercises - [ ] exercise 5.1 - [ ] exercise 5.2 - [ ] exercise 5.3 - [ ] exercise 5.4 - [ ] exercise 5.5 - [ ] exercise 5.6 - [ ] exercise 5.7 - [ ] exercise 5.8 - [ ] exercise 5.9 - [ ] exercise 5.10 - [ ] exercise 5.11 - [ ] exercise 5.12 - [ ] exercise 5.13 - [ ] exercise 5.14 - [ ] exercise 5.15 - [ ] exercise 5.16 - [ ] exercise 5.17 - [ ] exercise 5.18 - [ ] exercise 5.19 - [ ] exercise 5.20 - [ ] exercise 5.21 - [ ] exercise 5.22 - [ ] exercise 5.23",
+    "main": "index.js",
+    "scripts": {
+        "client:exercise": "cd exercises/bloglist-frontend && vite",
+        "client:practice": "cd practice-frontend/part2-notes && vite",
+        "client:practice-lint": "cd practice-frontend/part2-notes && npm run lint",
+        "client:practice-lint-fix": "cd practice-frontend/part2-notes && npm run lint:fix",
+        "client-old:practice": "cd practice-frontend/part2-notes && json-server -p3001 --watch db.json",
+        "server:exercise": "NODE_ENV=development nodemon -L exercises/bloglist/index.js",
+        "server:practice": "NODE_ENV=development nodemon -L practice-backend/part4_backend/index.js",
+        "test:exercise": "NODE_ENV=test jest exercises/bloglist/tests/blog_api.test.js --verbose --runInBand --forceExit",
+        "test:practice": "NODE_ENV=test node --test practice-backend/part4_backend/tests/note_api.test.js ",
+        "test:for_testing": "cd practice-backend/part4_backend && node --test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Tonyguo0/FullStackOpen2022_Part5.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Tonyguo0/FullStackOpen2022_Part5/issues"
+    },
+    "dependencies": {
+        "@testing-library/jest-dom": "^5.16.4",
+        "@testing-library/react": "^16.3.0",
+        "@testing-library/user-event": "^14.1.1",
+        "axios": "^0.27.2",
+        "bcrypt": "^5.1.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.1",
+        "express": "^5.1.0",
+        "jsonwebtoken": "^9.0.0",
+        "mongoose": "^6.4.5",
+        "mongoose-unique-validator": "^3.1.0",
+        "morgan": "^1.10.0",
+        "react": "^19.2.1",
+        "react-dom": "^19.2.1",
+        "react-scripts": "5.0.1",
+        "vite": "^7.2.6",
+        "web-vitals": "^2.1.4"
+    },
+    "proxy": "http://localhost:3001",
+    "devDependencies": {
+        "@vitejs/plugin-react": "^5.1.2",
+        "eslint": "^8.23.0",
+        "jest": "^29.3.1",
+        "json-server": "^1.0.0-beta.3",
+        "nodemon": "^2.0.18",
+        "shx": "^0.3.4",
+        "supertest": "^6.3.3"
+    },
+    "homepage": "https://github.com/Tonyguo0/FullStackOpen2022_Part5#readme",
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }

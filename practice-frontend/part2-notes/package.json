@@ -10,10 +10,10 @@
         "react-dom": "^19.2.1"
     },
     "scripts": {
-        "start": "nx exec -- vite",
-        "serve": "nx exec -- vite",
-        "build": "nx exec -- vite build",
-        "test": "nx exec -- vitest",
+        "start": "vite",
+        "serve": "vite",
+        "build": "vite build",
+        "test": "vitest",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix"
     },
