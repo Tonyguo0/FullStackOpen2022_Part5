@@ -1,4 +1,4 @@
-import { useState, useImperativeHandle, forwardRef } from 'react';
+import { useImperativeHandle, useState } from 'react';
 
 // remember it's props.children to pass components as props
 // and they're just destructured here

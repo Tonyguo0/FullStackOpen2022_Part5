@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 // const baseUrl = "http://localhost:3001/notes";
-const baseUrl = "/api/notes" || "http://localhost:3001/api/notes";
+const baseUrl = '/api/notes' || 'http://localhost:3001/api/notes';
 
 let token = null;
 
@@ -29,7 +29,6 @@ const update = (id, newObject) => {
     return request.then((response) => response.data);
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
     setToken,
     getAll,

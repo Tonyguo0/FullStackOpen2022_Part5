@@ -13,7 +13,9 @@
         "start": "nx exec -- vite",
         "serve": "nx exec -- vite",
         "build": "nx exec -- vite build",
-        "test": "nx exec -- vitest"
+        "test": "nx exec -- vitest",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix"
     },
     "eslintConfig": {
         "extends": [
@@ -55,6 +57,7 @@
         "eslint-plugin-jsx-a11y": "^6.10.2",
         "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-react-hooks": "^7.0.1",
+        "eslint-plugin-react-refresh": "^0.4.24",
         "jest-watch-typeahead": "^3.0.1",
         "jsdom": "^27.2.0",
         "json-server": "^0.17.4",

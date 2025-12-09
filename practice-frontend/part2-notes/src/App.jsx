@@ -75,7 +75,7 @@ const App = () => {
                 );
             })
             .catch((_error) => {
-                console.log(`inside the error`);
+                console.log('inside the error');
                 setErrorMessage(
                     `Note '${note.content}' was already removed from server`
                 );
@@ -114,7 +114,7 @@ const App = () => {
             setUser(user);
             setUsername('');
             setPassword('');
-        } catch (exception) {
+        } catch (_error) {
             setErrorMessage('Wrong credentials');
             setTimeout(() => {
                 setErrorMessage(null);

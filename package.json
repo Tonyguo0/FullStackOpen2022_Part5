@@ -7,6 +7,7 @@
     "client:exercise": "cd exercises/bloglist-frontend && vite",
     "client:practice": "cd practice-frontend/part2-notes && vite",
     "client:practice-lint": "cd practice-frontend/part2-notes && npm run lint",
+    "client:practice-lint-fix": "cd practice-frontend/part2-notes && npm run lint:fix",
     "client-old:practice": "cd practice-frontend/part2-notes && json-server -p3001 --watch db.json",
     "server:exercise": "NODE_ENV=development nodemon -L exercises/bloglist/index.js",
     "server:practice": "NODE_ENV=development nodemon -L practice-backend/part4_backend/index.js",
