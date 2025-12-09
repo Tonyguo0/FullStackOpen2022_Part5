@@ -15,7 +15,16 @@ const App = () => {
     const [errorMessage, setErrorMessage] = useState(null);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(() => {
+        const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser');
+        if (loggedUserJSON) {
+            const user = JSON.parse(loggedUserJSON);
+            // setUser(user);
+            noteService.setToken(user.token);
+            return user;
+        }
+        return null;
+    });
     // the noteFormRef variable acts as a reference to the Togglable component for the note form
     // this hook ensures that we can access the Togglable component's methods and properties from
     // within the App component
@@ -30,17 +39,17 @@ const App = () => {
     };
     useEffect(hooks, []);
 
-    useEffect(() => {
-        // check if user is logged in by looking at local storage
-        // if found, parse the user and SET the user state and token
-        // for the note service
-        const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser');
-        if (loggedUserJSON) {
-            const user = JSON.parse(loggedUserJSON);
-            setUser(user);
-            noteService.setToken(user.token);
-        }
-    }, []);
+    // useEffect(() => {
+    //     // check if user is logged in by looking at local storage
+    //     // if found, parse the user and SET the user state and token
+    //     // for the note service
+    //     const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser');
+    //     if (loggedUserJSON) {
+    //         const user = JSON.parse(loggedUserJSON);
+    //         setUser(user);
+    //         noteService.setToken(user.token);
+    //     }
+    // }, []);
     // console.log("render", notes.length, "notes");
 
     // when addnote is clicked
