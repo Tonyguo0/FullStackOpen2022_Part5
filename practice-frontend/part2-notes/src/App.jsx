@@ -12,7 +12,6 @@ import noteService from './services/notes';
 const App = () => {
     const [notes, setNotes] = useState([]);
     const [showAll, setShowAll] = useState(true);
-    const [notestoshow, setNotesToShow] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -56,11 +55,12 @@ const App = () => {
 
     // clicking on show important button triggers the ternary operator here
     // at render to make note into whatever based on showAll state is true or false by filtering
-    useEffect(() => {
-        setNotesToShow(
-            showAll ? notes : notes.filter((note) => note.important === true)
-        );
-    }, [showAll, notes]);
+
+    // we've now changed notesToShow to a const instead of
+    // state since it's derived from notes and showAll states
+    const notesToShow = showAll
+        ? notes
+        : notes.filter((note) => note.important === true);
 
     const toggleImportanceOf = (id) => {
         const note = notes.find((n) => n.id === id);
@@ -74,7 +74,7 @@ const App = () => {
                     notes.map((note) => (note.id === id ? returnedNote : note))
                 );
             })
-            .catch((_error) => {
+            .catch(() => {
                 console.log('inside the error');
                 setErrorMessage(
                     `Note '${note.content}' was already removed from server`
@@ -114,7 +114,7 @@ const App = () => {
             setUser(user);
             setUsername('');
             setPassword('');
-        } catch (_error) {
+        } catch {
             setErrorMessage('Wrong credentials');
             setTimeout(() => {
                 setErrorMessage(null);
@@ -185,7 +185,7 @@ const App = () => {
                 </button>
             </div>
             <ul>
-                {notestoshow.map((note) => (
+                {notesToShow.map((note) => (
                     // console.log(note)
                     // Note is in component folder
                     <Note
