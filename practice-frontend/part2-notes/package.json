@@ -1,6 +1,7 @@
 {
     "name": "notes",
     "version": "0.1.0",
+    "type": "module",
     "private": true,
     "dependencies": {
         "@swc/helpers": "^0.5.17",

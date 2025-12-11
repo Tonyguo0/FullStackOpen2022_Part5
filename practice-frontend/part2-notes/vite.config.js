@@ -17,9 +17,10 @@ export default defineConfig({
         watch: { usePolling: true },
     },
     test: {
+        // no need to import keywords such as desscribe, test and expect into the tests
         globals: true,
         environment: 'jsdom',
-        setupFiles: 'src/setupTests.js',
+        setupFiles: './testSetup.js',
         css: true,
     },
     plugins: [react()],

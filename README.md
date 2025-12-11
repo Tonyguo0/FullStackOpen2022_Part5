@@ -28,3 +28,6 @@
 ## Set-up
 # .env
 - REACT_APP_API_KEY=openweather app api key
+
+## Issues
+- trailing spaces in globals eslint.config.js github discussion: [github link to global dicussion](https://github.com/sindresorhus/globals/issues/239)
