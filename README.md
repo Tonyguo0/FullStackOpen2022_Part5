@@ -31,3 +31,6 @@
 
 ## Issues
 - trailing spaces in globals eslint.config.js github discussion: [github link to global dicussion](https://github.com/sindresorhus/globals/issues/239)
+
+## Up to
+- **Part 5c** - *Tests for the Togglable component*

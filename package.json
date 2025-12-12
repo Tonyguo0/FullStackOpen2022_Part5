@@ -26,7 +26,6 @@
         "url": "https://github.com/Tonyguo0/FullStackOpen2022_Part5/issues"
     },
     "dependencies": {
-        "@testing-library/user-event": "^14.1.1",
         "axios": "^0.27.2",
         "bcrypt": "^5.1.0",
         "cors": "^2.8.5",
@@ -47,6 +46,7 @@
     "devDependencies": {
         "@testing-library/jest-dom": "^6.9.1",
         "@testing-library/react": "^16.3.0",
+        "@testing-library/user-event": "^14.6.1",
         "@vitejs/plugin-react": "^5.1.2",
         "eslint": "^8.23.0",
         "eslint-plugin-react-refresh": "^0.4.24",
