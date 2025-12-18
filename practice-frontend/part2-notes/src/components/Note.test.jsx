@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Note from './Note';
 import { test } from 'vitest';
+import Note from './Note';
 
 test('renders content', () => {
     const note = {
@@ -18,7 +18,7 @@ test('renders content', () => {
     // this prints out the current state of the virtual DOM
     // useful for debugging tests
     //
-    screen.debug();
+    // screen.debug();
 
     // we can use the object screen to access the rendered component
     // we use screen's method getByText to search for an element that contains the specified text
@@ -27,7 +27,7 @@ test('renders content', () => {
         'Component testing is done with react-testing-library'
     );
 
-    screen.debug(element);
+    // screen.debug(element);
 
     // the existence of the element is verified using an vitest's expect function
     // expect generates an assertion for its argument
