@@ -11,11 +11,13 @@ test('<NoteForm /> updates parent state and calls onSubmit', async () => {
     // getByRole finds elements by their semantic role
     // here we find the textbox (input field) and the button
     // https://testing-library.com/docs/queries/byrole/
-    const input = screen.getByRole('textbox');
+    // getAllByRole returns an array of all matching elements
+    const inputs = screen.getAllByRole('textbox');
     const sendButton = screen.getByText('save');
 
-    await user.clear(input);
-    await user.type(input, 'testing a form...');
+    // inputs[0] is the first input field
+    await user.clear(inputs[0]);
+    await user.type(inputs[0], 'testing a form...');
     await user.click(sendButton);
 
     expect(createNote.mock.calls).toHaveLength(1);
