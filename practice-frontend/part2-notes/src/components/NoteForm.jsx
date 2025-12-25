@@ -24,7 +24,7 @@ const NoteForm = ({ createNote }) => {
                     value={newNote}
                     onChange={(event) => setNewNote(event.target.value)}
                 />
-                {/* 
+                {/*
                 example second input for testing
                 <input
                     value="something"
