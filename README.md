@@ -42,3 +42,6 @@
 - The fundamental principle is to compare the HTML code defined by the component after it has changed to the HTML code that existed before it was changed.
 
 - If the snapshot notices some change in the HTML defined by the component, then either it is new functionality or a "bug" caused by accident. Snapshot tests notify the developer if the HTML code of the component changes. The developer has to tell Vitest if the change was desired or undesired. If the change to the HTML code is unexpected, it strongly implies a bug, and the developer can become aware of these potential issues easily thanks to snapshot testing.
+
+### playwright
+- default port 9232 the report opens on doesn't work in wsl for some reaosn: will give forbidden 403 exception

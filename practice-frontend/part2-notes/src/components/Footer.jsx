@@ -11,7 +11,7 @@ const Footer = () => {
             <em>
                 {' '}
                 Note app, Department of Computer Science, University of Helsinki
-                2022
+                2025
             </em>
         </div>
     );
