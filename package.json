@@ -13,7 +13,7 @@
     "client-old:practice": "cd practice-frontend/part2-notes && json-server -p3001 --watch db.json",
     "server:exercise": "NODE_ENV=development nodemon -L exercises/bloglist/index.js",
     "server:practice": "NODE_ENV=development nodemon -L practice-backend/part4_backend/index.js",
-    "server:practice:env-test": "NODE_ENV=test node practice-backend/part4_backend/index.js",
+    "server:practice:env-test": "NODE_ENV=test nodemon -L practice-backend/part4_backend/index.js",
     "server:exercise:test": "NODE_ENV=test jest exercises/bloglist/tests/blog_api.test.js --verbose --runInBand --forceExit",
     "server:practice:test": "NODE_ENV=test node --test practice-backend/part4_backend/tests/note_api.test.js ",
     "test:playwright": "playwright test",
