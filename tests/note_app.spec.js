@@ -1,7 +1,18 @@
 const { test, expect, beforeEach, describe } = require('@playwright/test');
 
 describe('Note app', () => {
-    beforeEach(async ({ page }) => {
+    beforeEach(async ({ page, request }) => {
+        await request.post('http://localhost:3001/api/testing/reset');
+        const newUser = {
+            name: 'Tony Stark',
+            username: 'Tony',
+            password: 'gogotony'
+        };
+
+        await request.post('http://localhost:3001/api/users', {
+            data: newUser
+        });
+
         await page.goto('http://localhost:5173');
     });
 
@@ -20,7 +31,7 @@ describe('Note app', () => {
         await page.getByLabel('username').fill('Tony');
         await page.getByLabel('password').fill('gogotony');
         await page.getByRole('button', { name: 'login' }).click();
-        await expect(page.getByText('Tony logged in')).toBeVisible();
+        await expect(page.getByText('Tony Stark logged in')).toBeVisible();
     });
 
     describe('when logged in', () => {
@@ -34,7 +45,7 @@ describe('Note app', () => {
         test('a new note can be created', async ({ page }) => {
             await page.getByRole('button', { name: 'new note' }).click();
             await page
-                .getByRole('textbox')
+                .getByRole('textbox', { id: 'note-input' })
                 .fill('a note created by playwright');
             await page.getByRole('button', { name: 'save' }).click();
             await expect(
