@@ -70,4 +70,14 @@ describe('Note app', () => {
             });
         });
     });
+
+    test('login fails with wrong password', async ({ page }) => {
+        await page.getByRole('button', { name: 'log in' }).click();
+        await page.getByLabel('username').fill('Tony');
+        await page.getByLabel('password').fill('wrongpassword');
+        await page.getByRole('button', { name: 'login' }).click();
+
+        const errorMessage = page.getByText('wrong credentials');
+        await expect(errorMessage).toBeVisible();
+    });
 });
