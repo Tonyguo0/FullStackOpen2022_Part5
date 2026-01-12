@@ -77,7 +77,15 @@ describe('Note app', () => {
         await page.getByLabel('password').fill('wrongpassword');
         await page.getByRole('button', { name: 'login' }).click();
 
-        const errorMessage = page.getByText('wrong credentials');
+        const errorMessage = page.getByText('Wrong credentials');
         await expect(errorMessage).toBeVisible();
+
+        const errorDiv = page.locator('.error');
+        await expect(errorDiv).toContainText('Wrong credentials');
+
+        await expect(errorDiv).toHaveCSS('border-style', 'solid');
+        await expect(errorDiv).toHaveCSS('color', 'rgb(128, 0, 0)');
+
+        await expect(page.getByText('Tony Stark logged in')).not.toBeVisible();
     });
 });
