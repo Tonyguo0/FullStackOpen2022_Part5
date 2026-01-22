@@ -1,20 +1,28 @@
 const { test, expect, beforeEach, describe } = require('@playwright/test');
-const { loginWith } = require('./helper');
+const { loginWith, createNote } = require('./helper');
 
 describe('Note app', () => {
     beforeEach(async ({ page, request }) => {
-        await request.post('http://localhost:3001/api/testing/reset');
+        // vite forwards all requests made by the frontend to the address 
+        // http://localhost:5173/api to the backend: http://localhost:3001/api
+        // Thus, we can use the same address in the tests when we want to
+        // make requests to the backend directly
+        // we also made sure in playwright.config.js that the baseURL is set to
+        // 'http://localhost:5173'
+        // previously the await request.post('http://localhost:3001/api/testing/reset'); --- IGNORE ---
+        // is now changed to:
+        await request.post('/api/testing/reset');
         const newUser = {
             name: 'Tony Stark',
             username: 'Tony',
             password: 'gogotony'
         };
 
-        await request.post('http://localhost:3001/api/users', {
+        await request.post('/api/users', {
             data: newUser
         });
 
-        await page.goto('http://localhost:5173');
+        await page.goto('/');
     });
 
     test('front page can be opened', async ({ page }) => {
@@ -38,11 +46,7 @@ describe('Note app', () => {
         });
 
         test('a new note can be created', async ({ page }) => {
-            await page.getByRole('button', { name: 'new note' }).click();
-            await page
-                .getByRole('textbox', { id: 'note-input' })
-                .fill('a note created by playwright');
-            await page.getByRole('button', { name: 'save' }).click();
+            await createNote(page, 'a note created by playwright');
             await expect(
                 page.getByText('a note created by playwright')
             ).toBeVisible();
@@ -50,11 +54,7 @@ describe('Note app', () => {
 
         describe('and a note exists', () => {
             beforeEach(async ({ page }) => {
-                await page.getByRole('button', { name: 'new note' }).click();
-                await page
-                    .getByRole('textbox', { id: 'note-input' })
-                    .fill('another note created by playwright');
-                await page.getByRole('button', { name: 'save' }).click();
+                await createNote(page, 'another note created by playwright');
             });
 
             test('importance can be changed', async ({ page }) => {
