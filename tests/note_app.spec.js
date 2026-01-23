@@ -3,7 +3,7 @@ const { loginWith, createNote } = require('./helper');
 
 describe('Note app', () => {
     beforeEach(async ({ page, request }) => {
-        // vite forwards all requests made by the frontend to the address 
+        // vite forwards all requests made by the frontend to the address
         // http://localhost:5173/api to the backend: http://localhost:3001/api
         // Thus, we can use the same address in the tests when we want to
         // make requests to the backend directly
@@ -52,9 +52,10 @@ describe('Note app', () => {
             ).toBeVisible();
         });
 
-        describe('and a note exists', () => {
+        describe('and several notes exist', () => {
             beforeEach(async ({ page }) => {
-                await createNote(page, 'another note created by playwright');
+                await createNote(page, 'first note');
+                await createNote(page, 'second note');
             });
 
             test('importance can be changed', async ({ page }) => {
@@ -62,6 +63,19 @@ describe('Note app', () => {
                     .getByRole('button', { name: 'make not important' })
                     .click();
                 await expect(page.getByText('make important')).toBeVisible();
+            });
+
+            test('one of those can be made non-important', async ({ page }) => {
+                const otherNoteText = page.getByText('first note');
+                const otherNoteElement = otherNoteText.locator('..');
+
+                await otherNoteElement
+                    .getByRole('button', { name: 'make not important' })
+                    .click();
+
+                await expect(
+                    otherNoteElement.getByText('make important')
+                ).toBeVisible();
             });
         });
     });
