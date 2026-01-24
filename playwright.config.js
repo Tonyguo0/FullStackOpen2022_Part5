@@ -29,7 +29,7 @@ export default defineConfig({
         [
             'html',
             {
-                port: 9090 // Sets the specific port (default is 9323)
+                port: 9323 // Sets the specific port (default is 9323)
             }
         ]
     ],
