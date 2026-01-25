@@ -1,6 +1,11 @@
 const { test, expect, beforeEach, describe } = require('@playwright/test');
 const { loginWith, createNote } = require('./helper');
 
+// notes:
+// npx playwright codegen http://localhost:5173/ 
+// to generate code snippets for playwright tests
+// Record mode is on, can copy the locators and actions to the tests
+
 describe('Note app', () => {
     beforeEach(async ({ page, request }) => {
         // vite forwards all requests made by the frontend to the address

@@ -1,4 +1,8 @@
-# FullStackOpen2022_Part5
+# FullStackOpen2022_Part5 Testing React apps
+
+## Practices
+- completed
+- optional: *can do the cypress E2E test one later*
 
 ## Exercises
 - [x] exercise 5.1
@@ -44,4 +48,10 @@
 - If the snapshot notices some change in the HTML defined by the component, then either it is new functionality or a "bug" caused by accident. Snapshot tests notify the developer if the HTML code of the component changes. The developer has to tell Vitest if the change was desired or undesired. If the change to the HTML code is unexpected, it strongly implies a bug, and the developer can become aware of these potential issues easily thanks to snapshot testing.
 
 ### playwright
-- default port 9232 the report opens on doesn't work in wsl for some reaosn: will give forbidden 403 exception
+- default port 9232 the report opens on doesn't work in wsl for some reaosn: will give forbidden 403 exception so switched to using 9090 for now (but for some reason it works now with 9232 not sure why)
+
+- npx playwright codegen http://localhost:5173/ to generate code snippets for playwright tests, when record mode is on, can copy the locators and actions to the tests
+
+- can use **--trace on** to enabled checking the locators of all the elements in the frontend in the report
+
+
